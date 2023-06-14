@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>R07</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/Repair/R07.js"></script>
+</head>
+<body>
+    <div class="col-md-12 column">
+        <p class="bg-primary" style="font-size: 20px">頁面功能描述:HL-再檢工單下線</p>
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="col-md-12 column">
+                    <div class="col-md-3 column">
+                        <label style="color:red">lbluser:</label>
+                        <label id="user" style="color:red"></label>
+                        <label style="color:red">IP:</label>
+                        <label id="IPADDR" style="color:red"></label>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-md-3 column">
+        <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+            <fieldset>
+                <span id="getInfo" class="hide"></span>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">工單:</label>
+                    <div class="col-sm-6">
+                        <select id="order" class="form-control" onchange="orderchange()"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">返回站點:</label>
+                    <div class="col-sm-6">
+                        <select id="Ddl_step" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">刷入箱號:</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="box" class="form-control" onkeydown="R07keydown(event)" />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">維修下線批號:</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="newlot" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-10">
+                            <table id="jqGridR07"></table>
+                            <div id="jqGridPagerR07"></div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-md-9 column">
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-sm-5">
+                        <label class="col-sm-3 control-label">工單數量:</label>
+                        <div class="col-sm-8">
+                            <label style="background-color: silver; width: 100px; height: 20px; " id="ORDERNUM">&nbsp</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5">
+                        <label class="col-sm-3 control-label">剩餘下線數量:</label>
+                        <div class="col-sm-8">
+                            <label style="background-color: silver; width: 100px; height: 20px; " id="SHENYU">&nbsp</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-5">
+                        <label class="col-sm-3 control-label">機種:</label>
+                        <div class="col-sm-8">
+                            <label style="background-color: silver; width: 100px; height: 20px; " id="PRODUCTID">&nbsp</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5">
+                        <label class="col-sm-3 control-label">已刷入數量:</label>
+                        <div class="col-sm-8">
+                            <label style="background-color: silver; width: 100px; height: 20px; " id="innum">&nbsp</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-success btn-block" value="清空" onclick="deletetmp()">清空</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-success btn-block" value="確定" onclick="insert()">確定</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-success btn-block" value="列印" onclick="print()">列印</button>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <div class="col-sm-4">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-10">
+                            <table id="jqGridQ11"></table>
+                            <div id="jqGridPagerQ11"></div>
+                        </div>
+                    </div>
+                </div>-->
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

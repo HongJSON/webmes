@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>B005</title>    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../../assets/adminlte/skins/_all-skins.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../../css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../assets/adminlte/css/AdminLTE.css">
+    <link href="../../../assets/bootstrap/css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../assets/sweetalert2-8.11.8/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        .left-25 {
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="wrapper skin-blue">
+    <section class="content-header">
+        <h1>
+            大對LOT維護
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 基礎中心</a></li>
+            <li class="active">B005</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">作業人員：<span id="user"></span>&nbsp;電腦IP：<span id="ip"></span></label>
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">需求：大對LOT維護</label>
+            </div>
+            <audio src="/music/AUDIO_OK.wav" preload id="musicok"></audio>
+            <audio src="/music/AUDIO_NG.wav" preload id="musicng"></audio>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-sm-10 col-md-8 col-lg-6 column">
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="form-group">
+                                <span class="col-sm-3" id="lot" style="color:red"></span>
+                                <div class="col-sm-6">
+                                    <span id="getInfo" style="color:red"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="step">大對LOT:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="ary_lot" id="ary_lot" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="eqp">數量:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="quantity" id="quantity" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="button" class="btn btn-primary" onclick="show()">查詢</button>
+                                    <button type="button" class="btn btn-primary" onclick="Add()">添加</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 left-25">
+                            <table id="table" class="table table-hover"></table>
+                        </div>
+                    </div>
+                </div>
+                <!--<label id="showpage" style="color:red;width:100%;height:60%;font-size:30px;text-align: left"></label>-->
+            </div>
+        </div>
+    </section>    <!-- /.content -->
+    <script src="../../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/adminlte/js/adminlte.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../../../assets/sweetalert2-8.11.8/sweetalert2.min.js"></script>
+    <script src="../../../js/xlsx.core.min.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+    <!--工具类-->
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/Base/B005.js"></script>
+</body>
+</html>

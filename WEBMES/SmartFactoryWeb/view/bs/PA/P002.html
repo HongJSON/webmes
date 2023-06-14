@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>P02-結棧板作業</title>
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="../../../css/alertStyle.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+    <script src="../../../js/JsBarcode.all.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+</head>
+<body>
+    <p class="bg-primary" style="font-size: 20px">頁面功能描述: 結棧板頁面</p>
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <div class="col-md-12 column">
+                <label style="color:red">lbluser:</label>
+                <label id="user" style="color:red"></label>
+                <label style="color:red">IP:</label>
+                <label id="ipaddr" style="color:red"></label>
+            </div>
+        </fieldset>
+    </form>
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <div class="col-md-12 column">
+            </div>
+        </fieldset>
+    </form>
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <div class="col-sm-2 column"></div>
+            <div class="col-sm-2 column">
+                <input id="cbstroc" type="checkbox" />
+                <label for="cbstroc">切換工單所帶倉別</label>
+            </div>
+            <div class="col-sm-9 column">
+
+            </div>
+        </fieldset>
+    </form>
+    <form class="form-horizontal" role="form" style="height:20px;">
+        <fieldset>
+            <div class="col-sm-1 column">
+                <label></label>
+            </div>
+            <div class="col-sm-11" id="strocdiv" style="display:none">
+                <div class="col-sm-1 column">
+                    <label>請選擇倉別:</label>
+                </div>
+                <div class="col-sm-1 column">
+                    <select id="ddlstroc" class="form-control">
+                        <option value='M107'>M107</option>
+                        <option value='M10C'>M10C</option>
+                        <option value='M3C1'>M3C1</option>
+                        <option value='M101'>M101</option>
+                    </select>
+                </div>
+                <div class="col-sm-10 column"></div>
+            </div>
+        </fieldset>
+    </form>
+    <br />
+    <br />
+    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+        <fieldset>
+            <div class="col-sm-1 column">
+                <label></label>
+            </div>
+            <div class="col-sm-11 column">
+                <div class="col-md-1 column">
+                    <label>箱號:</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" id="boxid" type="text" onkeydown="keyintmp(event)" />
+                </div>
+                <div class="col-sm-1 column">
+                </div>
+                <div class="col-sm-1 column">
+                    <button type="button" class="btn btn-success btn-block" onclick="STOREIN()">確定</button>
+                </div>
+                <div class="col-sm-7 column">
+                    <div class=" col-md-12 column">
+                        <label class="col-md-2">MSG:</label>
+                        <div class="col-sm-10">
+                            <label id="labmsg" style="width:100%;height:60%; color:red;font-size:20px;"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <br />
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <div class="col-sm-1 column">
+                <label></label>
+            </div>
+            <div class="col-sm-11 column">
+                <div class="col-md-1 column">
+                    <label>數量:</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" id="boxnum" type="text" readonly="readonly" />
+                </div>
+                <div class="col-sm-1 column">
+                </div>
+                <div class="col-sm-1 column">
+                    <button type="button" class="btn btn-success btn-block" onclick="deltmpall()">清空</button>
+                </div>
+                <div class="col-sm-7 column">
+                    <div class=" col-md-12 column">
+                        <label class="col-md-2">SPFLAG:</label>
+                        <div class="col-sm-10">
+                            <label id="labsp" style="width:100%;height:60%; color:red;font-size:20px;"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <br />
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <div class="col-sm-1 column">
+                <label></label>
+            </div>
+            <div class="col-sm-11 column">
+                <div class="col-md-1 column">
+                    <label>入庫單號:</label>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" id="storeid" type="text" />
+                </div>
+                <div class="col-sm-1 column">
+                </div>
+                <div class="col-sm-1 column">
+                    <button type="button" id="prt" class="btn btn-success btn-block" onclick="PRT()">列印</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <br />
+    <form class="form-horizontal" role="form">
+        <fieldset>
+            <div class="col-md-1 form-group">
+            </div>
+            <div class="col-md-11 form-group">
+                <div class="col-md-12">
+                    <table id="jqGridST"></table>
+                    <div id="jqGridPagerST"></div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <script src="../../../js/bs/PA/P002.js?v071301"></script>
+    <!--startprint-->
+    <style media="print">
+        @page {
+            size: auto;
+            margin: 0mm;
+        }
+    </style>
+    <table id="tb1" style="font-size: 20px;margin: 0px 0px 0px 20px; display:none;">
+        <tr>
+            <td>
+                <label style="font-size: 40px; margin: 50px 0px 0px 180px;">緯創資通光電事業(元件)處&nbsp;&nbsp;</label>
+                <img id="imgcode" style="font-size: 20px;margin: 80px 0px 0px 0px; width:380px;height:100px;" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-size: 20px;margin: 10px 0px 0px 20px;">製錶時間:&nbsp;</label>
+                <label id="labdate"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-size: 20px; margin: 0px 0px 0px 450px;">MES完工入庫單</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-size: 20px; margin: 0px 0px 0px 20px; ">入庫單號:&nbsp;</label>
+                <label id="labrkd"></label>
+                <label style="font-size: 20px; margin: 0px 0px 0px 550px; ">入庫人員:&nbsp;</label>
+                <label id="labuser"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-size: 20px; margin: 0px 0px 0px 20px;">
+                    ________________________________________________________________________________________________
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="tb2" style="font-size: 20px; margin: 0px 0px 0px 20px;" border="1"></table>
+            </td>
+        </tr>
+        <tr>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-size: 20px; margin: 0px 0px 0px 40px;">申請人:______________</label>
+                <label style="font-size: 20px; margin: 0px 0px 0px 20px;">申請主管:______________</label>
+                <label style="font-size: 20px; margin: 0px 0px 0px 20px;">品保:______________</label>
+                <label style="font-size: 20px; margin: 0px 0px 0px 20px;">倉管:______________</label>
+            </td>
+        </tr>
+    </table>
+    <!--endprint-->
+</body>
+</html>

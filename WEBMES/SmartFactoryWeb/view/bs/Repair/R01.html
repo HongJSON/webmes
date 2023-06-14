@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>R06-非製造支援工單點收</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="../../../css/alertStyle.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/Repair/R01.js"></script>
+</head>
+<body class="hold-transition skin-blue">
+    <section class="content-header">
+        <h1>
+            R06-非製造支援工單點收
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 製造支援中心</a></li>
+            <li class="active">R06</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-20">
+                <div class="box box-primary">
+                    <div class="col-md-9 column">
+                        <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                            <fieldset>
+                                <legend>信息展示</legend><span id="lot"></span>
+                                <span id="getInfo"></span>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-5 control-label">待料狀態：</label>
+                                        <div class="col-sm-7">
+                                            <select name="item" id="item" class="form-control" >
+                                                <option value=""></option>
+                                                <option value="CELL">CELL</option>
+                                                <option value="PANEL">PANEL</option>
+                                                <option value="COG">COG</option>
+                                                <option value="D-FLEX">D-FLEX</option>
+                                                <option value="T-FLEX">T-FLEX</option>
+                                                <option value="U-FLEX">U-FLEX</option>
+                                                <option value="CGL">CGL</option>
+                                                <option value="成品">成品</option>
+                                                <option value="成品無印字">成品無印字</option>
+                                                <option value="MR-CELL">MR-CELL</option>
+                                                <option value="TERMINAL CUT">TERMINAL CUT</option>
+                                                <option value="COF">COF</option>
+                                                <option value="FOG">FOG</option>
+                                                <option value="FOF">FOF</option>
+                                                <option value="GRINDING">GRINDING</option>
+                                                <option value="CA">CA</option>
+                                            </select>               
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label class="col-md-8" style="width:100%;height:30%; color:red;font-size:10px;">一次只可點收同狀態料件，重選將清空</label>
+                                    </div>
+                                    </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-5 control-label">站點：</label>
+                                        <div class="col-sm-7">
+                                            <select name="stepm" id="stepm" class="form-control" >
+                                                <option value="">加載中...</option> 
+                                            </select> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-5 control-label">所屬工單：</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="order" class="form-control" disabled="disabled" />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="RepairType" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="Remaind1" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="AB" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-5 control-label">料號：</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="product" class="form-control" disabled="disabled" />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="Label15" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="Remaindtype" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="Label13" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="Label19" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="Label14" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-5 control-label">LOTID：</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="lotid" class="form-control" onkeydown="R01keydown(event)" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-sm-5">
+                 
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label id="txtShow" style="width:100%;height:30%; color:red;font-size:10px;"></label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-2">
+                                    </div>
+                                        <div class="col-sm-2">
+                                            <div class="col-sm-5">
+                                                <button type="button" class="btn btn-primary" onclick="btn_Elot_Click()">確認點收</button>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="col-sm-5">
+                                                <button type="button" class="btn btn-primary" onclick="Button2_Click()">清空</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </fieldset>
+                        </form>
+                        <table id="jqGridRepairStep"></table>
+                        <div id="jqGridPagerRepairStep"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

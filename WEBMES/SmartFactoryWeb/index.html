@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LUX MES</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../../css/ionicons.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../assets/adminlte/css/AdminLTE.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="../../../assets/adminlte/skins/skin-blue.min.css">
+
+    <!-- jQuery 3 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <!--<script src="../../../assets/jquery/jquery-3.1.1.min.js"></script>-->
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../../assets/adminlte/js/adminlte.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/index.js"></script>
+
+    <!-- 公共  -->
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- <script src="../../../lib/jquery/jquery.min.js"></script> -->
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+    <script src="../../../js/sweetalert.min.js"></script>
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>MES</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Welcome</b>  LUX MES</span>
+            </a>
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" onclick="logout()" data-toggle="dropdown">
+                                <!-- The user img in the navbar-->
+                                <img src="img/1.png" class="user-image" alt="User Image">
+                                <!-- hidden-xs hides the username on small devices so only the img appears. -->
+                                <span class="hidden-xs" id="loginUse"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user img in the menu -->
+                                <li class="user-header">
+                                    <img src="img/1.png" class="img-circle" alt="User Image">
+                                    <p>
+                                        <span id="loginUs"></span> - KP0L30
+                                        <small>Member since Nov. 2018</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="/" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" id="container">
+            
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="pull-right pull-right hidden-xs">
+                BU17 IT 资讯部
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright 2004 -   &copy; 2022 Luxshare-ICT.</strong> All Rights Reserved.
+        </footer>
+        <!-- Control Sidebar -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    <!-- REQUIRED JS SCRIPTS -->
+    
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+         Both of these plugins are recommended to enhance the
+         user experience. -->
+</body>
+</html>

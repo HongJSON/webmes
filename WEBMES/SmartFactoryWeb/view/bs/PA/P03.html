@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Buttons</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../../assets/adminlte/skins/_all-skins.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../../css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../assets/adminlte/css/AdminLTE.css">
+    <link href="../../../assets/bootstrap/css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../assets/sweetalert2-8.11.8/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        .left-25 {
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        .form-group > label {
+            text-align: right;
+        }
+
+        input {
+            border-radius: 3px !important;
+        }
+    </style>
+</head>
+<body class="wrapper skin-blue">
+    <section class="content-header">
+        <h1>
+            包裝點收
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 包裝中心</a></li>
+            <li class="active">P03</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content" style="height: 100%;">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">作業人員：<span id="user"></span>,&nbsp;電腦IP：<span id="ip"></span></label>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-horizontal left-25">
+                            <div class="form-group">
+                                <label class="col-md-1">OQC_Runcard編碼</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="text" id="elot_id" />
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-block btn-primary btn-xs" onclick="paReceive()" id="addBtn">包裝點收</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-1">數量</label>
+                                <div class="col-md-1">
+                                    <input class="form-control" readonly type="text" id="qty" />
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-block btn-primary btn-xs" onclick="clearTmp()">清空臨時表</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <table id="tmpTable" class="table table-hover"></table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!--<div class="row">
+                    <div class="col-md-2 left-25">
+                        <table id="rejectTable" class="table table-hover"></table>
+                    </div>
+                </div>-->
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <script src="../../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/adminlte/js/adminlte.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../../../assets/sweetalert2-8.11.8/sweetalert2.min.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/PA/P03.js"></script>
+</body>
+</html>

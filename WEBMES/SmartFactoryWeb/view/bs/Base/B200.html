@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>维修再检下线</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="../../../css/alertStyle.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/Base/B200.js"></script>
+</head>
+<body class="hold-transition skin-blue">
+    <section class="content-header">
+        <h1>
+            权限管理
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 基礎中心</a></li>
+            <li class="active">B161</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- <div class="col-md-18">
+                           <div class="box box-primary">
+                               <div class="col-md-3 column">
+                                   <span id="getInfo" style="color:red"></span>-->
+            <form class="form-horizontal" role="form">
+                <fieldset>
+                    <legend>信息展示</legend>
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <label class="col-sm-3 control-label">工号：</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="Text1" onkeydown="onKeyDown(event)" class="form-control" />
+                            </div>
+
+                            <label class="col-sm-3 control-label">姓名：</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="Text2" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <label class="col-sm-3 control-label">密码：</label>
+                            <div class="col-sm-3">
+                                <input type="password" id="Text3" class="form-control" />
+                            </div>
+
+                            <label class="col-sm-3 control-label">确认密码：</label>
+                            <div class="col-sm-3">
+                                <input type="password" id="Text4" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <label class="col-sm-3 control-label">权限：</label>
+                            <div class="col-sm-3">
+                                <label><input name='item' id="ChkAll" onclick="checkboxOnclick(this)" type='checkbox' value="全选" />全选</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <label><input name='item' id="Chkadmin" type='checkbox' value="管理员" />管理员</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group" style=" margin-left:20%; ">
+                        <div id="result1">
+                            <div id="result" style="background-color:#fff; width:1000px; margin-left:20px; ">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 control-label" style="margin-left:30%;">
+                        <button type="button" id="button1" class="btn btn-primary" style=" width:100px;" onclick="insert()">添加</button>
+                        <button type="button" id="button2" class="btn btn-primary" style=" width:100px; margin-left:20px; " onclick="update()">更新</button>
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <!--               </div>
+                       </div>
+                   </div>
+               </div>-->
+
+    </section>
+
+</body>
+</html>
+

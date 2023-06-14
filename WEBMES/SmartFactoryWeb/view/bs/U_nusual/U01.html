@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>U01-HL拆批作業</title>
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="../../../css/alertStyle.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/U_nusual/U01.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="container">
+                <section class="content-header">
+                    <h1>
+                        HL拆批作業
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i>異常中心</a></li>
+                        <li class="active">U01</li>
+                    </ol>
+                </section>
+                <p class="bg-primary" style="font-size: 20px">頁面功能描述: 進行正常拆批</p>
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <audio src="/music/AUDIO_OK.wav" preload id="musicok"></audio>
+                        <audio src="/music/AUDIO_NG.wav" preload id="musicng"></audio>
+                        <div class="col-md-6 column">
+                            <div class="col-md-5 column">
+                                <label style="color:red">lbluser:</label>
+                                <label id="user" style="color:red"></label>
+                                <label style="color:red">IP:</label>
+                                <span id="IPADDR" style="color:red"></span>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div class="col-sm-2">
+                                    <label style="color:red">PageId:</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select id="pageid" class="form-control" onchange="pagechange()">
+                                        <option value="01">Page01</option>
+                                        <option value="02">Page02</option>
+                                        <option value="03">Page03</option>
+                                        <option value="04">Page04</option>
+                                        <option value="05">Page05</option>
+                                        <option value="06">Page06</option>
+                                        <option value="07">Page07</option>
+                                        <option value="08">Page08</option>
+                                        <option value="09">Page09</option>
+                                        <option value="10">Page10</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 column">
+                        </div>
+                    </fieldset>
+                </form>
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="col-md-3 column">
+
+                        </div>
+                        <div class="col-md-3 column">
+                            <input type="radio" name="r1" id="rb1" checked="checked" />
+                            <label>正常拆批</label>
+                        </div>
+                        <div class="col-md-3 column">
+                            <input type="radio" name="r2" id="rb2" style="display:none" />
+                        </div>
+                        <div class="col-md-3 column">
+                        </div>
+                    </fieldset>
+                </form>
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="col-md-12 column">
+                            <br />
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="container">
+                <div class="col-sm-6">
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-md-6 column">
+                                <label class="col-md-4">Lot批號:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" style="min-width: 400px" id="lotid" onkeydown="keylotin(event)" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                            </div>
+                        </fieldset>
+                    </form>
+                    <br />
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-md-6 column">
+                                <label class="col-md-4">拆批數量:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" style="min-width: 400px" id="lotnum" onkeydown="keylottmpin(event)" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                            </div>
+                        </fieldset>
+                    </form>
+                    <br />
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-sm-6">
+                                <label class="col-sm-4">工單：</label>
+                                <div class="col-sm-8">
+                                    <label id="mo" style="min-width: 250px;color:red"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-sm-6">
+                                <label id="Label6" style="min-width: 250px;color:red"></label>
+                            </div>
+                            <div class="col-md-6 column">
+                            </div>
+                        </fieldset>
+                    </form><br />
+                    <form class="form-horizontal" style="height:250px" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <table id="jqGridU01" class="ui-jqgrid-btable"></table>
+                        <div id="jqGridPagerU01"></div>
+                    </form>
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-sm-6">
+                                <label class="col-sm-4">拆批批號：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" style="min-width: 150px" id="BRKLOT" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div class="col-md-6 column" id="STATUS">
+                                    <button type="button" class="btn btn-primary" id="btn1" style="min-width: 120px" onclick="BRKLotInsert()">確定</button>
+                                </div>
+                                <div class="col-md-4 column">
+                                    <button type="button" class="btn btn-primary" id="btn2" onclick="printlot()">列印</button>
+                                </div>
+                                <div class="col-md-2 column">
+                                    <button type="button" class="btn btn-primary" id="btn3" onclick="clearall()">清除</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-sm-4">
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-md-8 column">
+                                <label class="col-md-4">產品數量:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" style="min-width: 200px" id="NUM1" readonly="readonly" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form><br />
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-md-8 column">
+                                <label class="col-md-4">刷入数量:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" style="color: red; min-width: 200px" id="status" readonly="readonly" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form><br />
+
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="col-md-8 column">
+                                <label class="col-md-4">當前站點:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" style="min-width: 200px" id="step" readonly="readonly" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-sm-2">
+                    <form class="form-horizontal" role="form">
+                        <fieldset>
+                            <div class="col-md-12 column">
+                                <label id="showpage" style="color:red;width:100%;height:60%;font-size:80px"></label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

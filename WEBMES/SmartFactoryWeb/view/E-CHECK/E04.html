@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>机种线体上下限信息配置</title>    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../../assets/adminlte/skins/_all-skins.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../../css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../assets/adminlte/css/AdminLTE.css">
+    <link href="../../../assets/bootstrap/css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../assets/bootstrap/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="../../../assets/sweetalert2-8.11.8/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        .left-25 {
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+<body class="wrapper skin-blue">
+
+
+
+
+    <section class="content-header">
+        <h1>
+            机种线体上下限信息配置
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> IPQC-ECHECK</a></li>
+            <li class="active">机种线体上下限信息配置</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">操作人员：<span id="user"></span>&nbsp;</label>
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">需求：机种线体上下限信息配置&nbsp;</label>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-sm-10 col-md-8 col-lg-6 column">
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="form-group">
+                                <span class="col-sm-3" id="lot" style="color:red"></span>
+                                <div class="col-sm-6">
+                                    <span id="getInfo" style="color:red"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">线体:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="PdlineName" data-live-search="true"></select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="text" name="entryDate" id="JJ" class="form-control" autocomplete="off" onkeydown="E04Keydown(event)" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">机种:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="ModelName" data-live-search="true"></select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="text" name="entryDate" id="JJMo" class="form-control" autocomplete="off" onkeydown="E04MKeydown(event)" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">制程名称:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="ProjectName" data-live-search="true" onchange="GetProcess()"></select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="text" name="entryDate" id="JJJ" class="form-control" autocomplete="off" onkeydown="E04PKeydown(event)" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">工站序号:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="entryDate" id="ProjectNo" class="form-control" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">点检频率:</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" data-live-search="true" id="Frequency">
+                                        <option value="2">二小时一次</option>
+                                        <option value="4">四小时一次</option>
+                                        <option value="12">十二小时一次</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">点检制程名称:</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" id="Check_Name" data-live-search="true" onchange="GetProcessL()"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">检查事项:</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" id="Check_Item" data-live-search="true"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">单位:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="ary_lot" id="Unit" class="form-control" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">抽检数量:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="ary_lot" id="Check_Qty" class="form-control" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">上限数值:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="ary_lot" id="Upper" class="form-control" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label small" for="modelName" data-live-search="true">下限数值:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="ary_lot" id="Floor" class="form-control" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-9">
+                                    <button type="button" class="btn btn-primary" onclick="SelectDown()">导出</button>
+                                    <button type="button" class="btn btn-primary" onclick="SelectShow()">查询</button>
+                                    <button type="button" class="btn btn-primary" onclick="Add()">添加</button>
+                                    <button type="button" class="btn btn-primary" onclick="download()">下载模板</button>
+                                    <button type="button" class="btn btn-primary" onclick="importExcel()">上传</button>
+                                    <label for="fileinp">
+                                        <input type="file" id="fileinp" />
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div id="mymodal" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title">请编辑</h4>
+
+                                        </div>
+                                        <div class="form-group">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">线体</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LPdlineName" class="form-control" autocomplete="off" readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">机种</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LModelName" class="form-control" autocomplete="off" readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">制程名称</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LProjectName" class="form-control" autocomplete="off" readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">工站序号</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LProjectNo" class="form-control" autocomplete="off" readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">点检频率:</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" data-live-search="true" id="LFrequency">
+                                                    <option value="2">二小时一次</option>
+                                                    <option value="4">四小时一次</option>
+                                                    <option value="12">十二小时一次</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">点检制程名称</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LCheck_Name" class="form-control" autocomplete="off" readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">检查事项</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LCheck_Item" class="form-control" autocomplete="off" readonly="readonly" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">单位</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LUnit" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">抽检数量</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LCheck_Qty" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">管控上限</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LUpper" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">管控下限</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="ary_lot" id="LFloor" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn" data-dismiss="modal">取消</button>
+                                            <button type="button" class="btn btn-primary" onclick="insert()">确定</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-md-10 col-lg-10 left-25">
+                        <table id="table" class="table table-hover" style="table-layout: auto; word-break: break-all;"></table>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>    <!-- /.content -->
+    <script src="../../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/adminlte/js/adminlte.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../../../assets/sweetalert2-8.11.8/sweetalert2.min.js"></script>
+    <script src="../../../js/xlsx.core.min.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap-select.js"></script>
+    <!--工具类-->
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/E-CHECK/E04.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\controller",
+    "\\controller\\Base",
+    "\\controller\\MoveOut",
+    "\\js",
+    "\\js\\bs",
+    "\\js\\bs\\Base",
+    "\\view",
+    "\\view\\bs",
+    "\\view\\bs\\Base"
+  ],
+  "SelectedNode": "\\index.html",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,124 @@
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\SmartFactoryWeb.dll.config
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\SmartFactoryWeb.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\SmartFactoryWeb.pdb
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\WebForms_Basic.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\csc.exe
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\csc.exe.config
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\csc.rsp
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\csi.exe
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\csi.rsp
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\System.AppContext.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\System.Collections.Immutable.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\System.IO.FileSystem.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\System.Reflection.Metadata.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\vbc.exe
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\vbc.exe.config
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\vbc.rsp
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\VBCSCompiler.exe
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\roslyn\VBCSCompiler.exe.config
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Antlr3.Runtime.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\AspNet.ScriptManager.bootstrap.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\AspNet.ScriptManager.jQuery.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.ScriptManager.WebForms.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.Web.Infrastructure.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Newtonsoft.Json.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\System.Web.Optimization.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\WebGrease.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Antlr3.Runtime.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\System.Web.Optimization.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Newtonsoft.Json.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.Resources.resources
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.GenerateResource.cache
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.CoreCompileInputs.cache
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.CopyComplete
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\WebForms_Basic.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.pdb
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Spire.Pdf.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Spire.XLS.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Microsoft.mshtml.dll
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Spire.Pdf.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\bin\Spire.XLS.xml
+D:\03 BU17_MES_SOURCE_CODE\智能工厂\SmartFactoryWeb\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.AssemblyReference.cache
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\SmartFactoryWeb.dll.config
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\SmartFactoryWeb.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\SmartFactoryWeb.pdb
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\WebForms_Basic.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\csc.exe
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\csc.exe.config
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\csc.rsp
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\csi.exe
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\csi.rsp
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\System.AppContext.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\System.Collections.Immutable.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\System.IO.FileSystem.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\System.Reflection.Metadata.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\vbc.exe
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\vbc.exe.config
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\vbc.rsp
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\VBCSCompiler.exe
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\roslyn\VBCSCompiler.exe.config
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Antlr3.Runtime.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\AspNet.ScriptManager.bootstrap.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\AspNet.ScriptManager.jQuery.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.ScriptManager.WebForms.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.Web.Infrastructure.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Newtonsoft.Json.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Spire.Pdf.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Spire.XLS.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\System.Web.Optimization.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\WebGrease.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.mshtml.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Antlr3.Runtime.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Spire.Pdf.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Spire.XLS.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\System.Web.Optimization.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Newtonsoft.Json.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.AssemblyReference.cache
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.Resources.resources
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.GenerateResource.cache
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.CoreCompileInputs.cache
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.vbproj.CopyComplete
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.dll
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\WebForms_Basic.xml
+D:\立讯工作\code\WEBMES\SmartFactoryWeb\obj\x64\Debug\SmartFactoryWeb.pdb

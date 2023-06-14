@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>Q01</title>
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/sweetalert.min.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/OQC/Q01.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+    <style>
+        legend,#cnt {
+            color: red;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue">
+    <section class="content-header">
+        <h1>
+            OQC結批作業
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> OQC中心</a></li>
+            <li class="active">Q01</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="col-md-8 column">
+                        <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                            <fieldset>
+                                <legend>信息展示:作業人員：<span id="user"></span>&nbsp;，電腦IP：<span id="ip"></span></legend>
+                                <span id="auth_user"></span>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">LOT編碼</label>
+                                        <div class='col-md-4'>
+                                            <input type='text' id="lotid" class="form-control" onkeydown="onKeyDownLotid(event)" />
+                                        </div>
+                                        <div class='col-md-1'>
+                                            <button type="button" class="btn btn-primary form-control" onclick="addELot()">結批</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">刷入數量</label>
+                                        <div class="col-md-4">
+                                            <span id="cnt">0</span>
+                                        </div>
+                                        <div class='col-md-1'>
+                                            <button type="button" class="btn btn-primary form-control" onclick="printELot()">列印</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">批號編碼</label>
+                                        <div class="col-md-4">
+                                            <input type='text' id="elot" class="form-control" />
+                                        </div>
+                                        <div class='col-md-1'>
+                                            <button type="button" class="btn btn-primary form-control" onclick="clearTmp()">清空</button>
+                                        </div>
+                                    </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table id="jqGridRepairStep"></table>
+            <div id="jqGridPagerRepairStep"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <table id="table" class="table table-hover" style="table-layout: fixed; word-break: break-all;"></table>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

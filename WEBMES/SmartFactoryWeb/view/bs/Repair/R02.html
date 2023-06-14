@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>R02-製造支援拆箱作業</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="../../../css/alertStyle.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/Repair/R02.js"></script>
+</head>
+<body class="hold-transition skin-blue">
+    <section class="content-header">
+        <h1>
+            R02-製造支援拆箱作業
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 製造支援中心</a></li>
+            <li class="active">R02</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-20">
+                <div class="box box-primary">
+                    <div class="col-md-9 column">
+                        <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                            <fieldset>
+                                <legend>信息展示</legend><span id="lot"></span>
+                                <span id="getInfo"></span>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-5 control-label">箱號打包類別：</label>
+                                        <div class="col-sm-7">
+                                            <select name="item" id="item" class="form-control">
+                                                <option value=""></option>
+                                                <option value="BRWPAGE">製造支援正常打包頁面</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-5 control-label">製造支援箱號：</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" id="boxid" class="form-control" onkeydown="R02keydown(event)" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label class="col-sm-6 control-label"></label>
+                                        <button type="button" class="btn btn-primary" onclick="btn_Click()">拆箱</button>
+                                        <button type="button" class="btn btn-primary" onclick="btn_clear()">清空</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <table id="jqGridRepairStep"></table>
+                        <div id="jqGridPagerRepairStep"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

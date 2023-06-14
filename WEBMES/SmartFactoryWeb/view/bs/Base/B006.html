@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Buttons</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../../assets/adminlte/skins/_all-skins.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <!--<link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.min.css">-->
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../../css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../assets/adminlte/css/AdminLTE.css">
+    <link href="../../../assets/bootstrap/css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../assets/sweetalert2-8.11.8/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        .left-25 {
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="wrapper skin-blue">
+    <section class="content-header">
+        <h1>
+            HL-退庫不良品基礎資料維護
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 基礎中心</a></li>
+            <li class="active">B06</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">作業人員：<span id="user"></span>&nbsp;,電腦IP：<span id="ip"></span></label>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <form class="form-horizontal left-25">
+                            <div class="form-group">
+                                <label class="col-md-2">工单：</label>
+                                <div class="col-md-4">
+                                    <input class="form-control input-sm" id="orderno" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2">料號：</label>
+                                <div class="col-md-4">
+                                    <input class="form-control input-sm" id="upn" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2">待料狀態：</label>
+                                <div class="col-md-4">
+                                    <select class="form-control input-sm" data-live-search="true" id="status">
+                                        <option value=""></option>
+                                        <option value="CELL">CELL</option>
+                                        <option value="POL">POL</option>
+                                        <option value="COG">COG</option>
+                                        <option value="FOG">FOG</option>
+                                        <option value="FOB">FOB</option>
+                                        <option value="OPEN CELL">OPEN CELL</option>
+                                        <option value="WO TAPE">WO TAPE</option>
+                                        <option value="WO LABEL">WO LABEL</option>
+                                        <option value="WO PACKING">WO PACKING</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-1"></label>
+                                <div class="col-md-4" style="text-align: right;">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="show()">查詢</button>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="add()">添加</button>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="toExcel()">導出Excel</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_remark ">批量上传</label>
+                                <div class="col-sm-3">
+                                    <label for="fileinp">
+                                        <input type="file" id="fileinp" />
+                                    </label>
+                                    <button id="Sure" type="button" class="btn btn-primary" onclick="importExcel()" style="width: 70px; height: 26px;font-size:11px">确定上传</button>
+                                    <a id="Load" href="../../../Model/Repairupn.xls" class="btn btn-primary" style="width: 70px; height: 26px;font-size:11px">下载模板</a>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-6 left-25">
+                        <table id="table" class="table table-hover"></table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+    <script src="../../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/adminlte/js/adminlte.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../../../assets/sweetalert2-8.11.8/sweetalert2.min.js"></script>
+    <script src="../../../js/xlsx.core.min.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/Base/B006.js"></script>
+</body>
+</html>

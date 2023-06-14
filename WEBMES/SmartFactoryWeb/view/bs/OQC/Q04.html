@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>Q11</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/OQC/Q04.js?v06171"></script>
+</head>
+<body>
+    <div class="col-md-12 column">
+        <p class="bg-primary" style="font-size: 20px">頁面功能描述: OQC 目檢過賬</p>
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="col-md-12 column">
+                    <div class="col-md-3 column">
+                        <label style="color:red">lbluser:</label>
+                        <label id="user" style="color:red"></label>
+                        <label style="color:red">IP:</label>
+                        <label id="IPADDR" style="color:red"></label>
+                    </div>
+                    <div class="col-md-3 column">
+                        <label style="color:red; display:none;" id="LNG">此大批号正在執行中,請稍後</label>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-md-3 column">
+        <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+            <fieldset>
+                <span id="getInfo" class="hide"></span>
+                <legend>LOT信息展示區</legend>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">過賬站點:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="stepid" id="stepid" class="form-control" value="OQC02" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">批號:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="lotid" id="lotid" class="form-control" onkeydown="onKeyDownlot(event)" />
+                    </div>
+                </div>              
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">過賬類型:</label>
+                    <div class="col-sm-6">
+                        <select id="movetype" name="movetype" class="form-control small">
+                            <!--<option value="NA">NA</option>-->
+                            <option value="允收">允收</option>
+                            <!--<option value="判退">判退</option>-->
+                        </select>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">數量:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="lotnum" id="lotnum" class="form-control" readonly="readonly" />
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-md-9 column">
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <legend>LCM電檢:</legend>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label class="col-sm-4 control-label">操作者:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="ouser" id="ouser" autocomplete="on" class="form-control" onkeydown="onKeyDowncheckouser(event)" />
+                        </div>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label class="col-sm-4 control-label">檢驗類別:</label>
+                        <div class="col-sm-8">
+                            <select id="ddltype" name="ddltype" class="form-control small" onchange="changeddl()">
+                                <option value="0">請選擇</option>
+                                <option value="1">全檢</option>
+                                <option value="2">抽檢</option>
+                                <option value="3">OTHER</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" id="check1" style=" display:none;">
+                        <label class="col-sm-4 control-label">抽檢數量:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="checknum" id="checknum" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label class="col-sm-4 control-label">不良代碼:</label>
+                        <div class="col-sm-8">
+                            <select id="ngcodeid" name="ngcodeid" class="form-control small"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="col-sm-4 control-label">不良LOT:</label>
+                        <div class="col-sm-8">
+                            <!-- <input type="text" name="ngsn" id="ngsn" class="form-control" onkeydown="onKeyDownNgtmp(event)" />-->
+                            <input type="text" name="nglot" id="ngLot" class="form-control" onkeydown="onKeyDownNgLot(event)" onblur="checkNgLot()" />
+                           
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <span id="isnlotnum" style="display:none">
+                            <label style="color:red">数量:</label>
+                            <label id="mlotnum" style="color:red"></label>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label class="col-sm-4 control-label">不良備註:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="ngremark" id="ngremark" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="col-sm-4 control-label">不良数量:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="ngnum" id="ngnum" class="form-control" onkeydown="onKeyDownNgtmp(event)" />
+                        </div>
+                    </div>
+                </div>                        
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-10">
+                            <table id="jqGridQ11"></table>
+                            <div id="jqGridPagerQ11"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <button type="button" id="checkOK" style="display:block" name="checkOK" class="btn btn-success  btn-block" value="允收" onclick="yunshou()">允收</button>
+                        </div>
+                        <div class="col-sm-1">
+                        </div>                       
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

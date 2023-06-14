@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>過賬作業</title>
+
+    <link href="../../../lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.css" rel="stylesheet" />
+    <link href="../../../css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+
+    <!-- jquery插件包-必要 -->
+    <!-- 这个是所有jquery插件的基础，首先第一个引入 -->
+    <script src="../../../js/jquery-1.7.1.js"></script>
+    <script src="../../../lib/jquery/jquery.js"></script>
+    <script src="../../../lib/jquery/jquery.min.js"></script>
+    <script src="../../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap-table.js"></script>
+    <script src="../../../js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-select.js"></script>
+    <script src="../../../js/bootstrapValidator.min.js"></script>
+    <script src="../../../js/jquery.editable-select.min.js"></script>
+
+    <script src="../../../js/jquery.jqGrid.min.js"></script>
+    <script src="../../../js/grid.locale-cn.js"></script>
+
+    <!-- jqGrid相关 -->
+    <link href="../../../jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <!-- 在jqgrid/css/css这个目录下还有其他的主题包，可以尝试更换看效果 -->
+    <link href="../../../jqgrid/css/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+
+    <!-- jqGrid插件包-必要 -->
+    <script src="../../../jqgrid/js/jquery.jqGrid.src.js"></script>
+    <!-- jqGrid插件的多语言包-非必要 -->
+    <!-- 在jqgrid/js/i18n下还有其他的多语言包，可以尝试更换看效果 -->
+    <script src="../../../jqgrid/js/i18n/grid.locale-cn.js"></script>
+
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/MoveOut/G002.js?v0821"></script>
+
+</head>
+<body >
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-3 column">
+                <div class="row clearfix">
+                    <form class="form-horizontal" role="form">
+                        <fieldset>
+                            <span id="getInfo" class="hide"></span>
+                            <legend>LOT信息展示區</legend>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_line">当前线体</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtlineid" id="lineid" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_stepm">当前站点</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtstepid" id="stepcurrent" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label class="col-sm-3 control-label small" for="ds_lot">当前LOT</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="txtlot" id="lot" class="form-control" onkeydown="onKeyDown(event)" />
+                                    </div>
+                            </div>
+                            <div class="form-group hide" id="ORDERMSG">
+                                <label class="col-sm-8 control-label label-danger" >此lot所屬工單為急結工單,請盡快處理</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_qty">当前数量</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtqty" id="lotqty" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_stepcurrent">目前状态</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtstepcurrent" id="lotstatus" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_lotstartdate">下线日期</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtlotstartdate" id="lotstartdate" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_orderno">所属工单</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtorderno" id="orderno" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_realdate">预交日期</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtrealdate" id="realdate" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_productid">所属机种</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtproductid" id="productid" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_productcode">机种类别</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtproductcode" id="codeid" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="ds_processname">生产规范</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="txtprocessname" id="processname" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-9 column">
+                <form class="form-horizontal" role="form" id="addRole">
+                    <fieldset>
+                        <legend>添加操作人员信息</legend>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label small" for="ds_stepm">小站点</label>
+                                <div class="col-sm-8">
+                                    <!-- placeholder="192.168.1.161" -->
+                                    <select id="addstepm" class="form-control "></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label" for="ds_line">跨线</label>
+                                <div class="col-sm-8">
+                                    <select id="addline" class="form-control small"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group hide" id="material">
+                            <div class="col-sm-4 hide" id="material1">
+                                <label class="col-sm-4 control-label small" id="materialname1">liaojian</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext1" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext1s" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4" id="material2">
+                                <label class="col-sm-4 control-label small" id="materialname2">料件名称2</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext2" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext2s" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4" id="material3">
+                                <label class="col-sm-4 control-label small" id="materialname3">料件名称3</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext3" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext3s" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group hide" id="materials">
+                            <div class="col-sm-4 hide" id="material4">
+                                <label class="col-sm-4 control-label small" id="materialname4">liaojian</label>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext4" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" id="materialtext4s" class="form-control" onkeyup="this.value=this.value.replace(/[^\w_]/g,'')" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label" for="ds_eqp">机台</label>
+                                <div class="col-sm-8">
+                                    <select id="addeqp" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label" for="ds_ouser">操作者</label>
+                                <div class="col-sm-8">
+                                    <select id="addoper" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                
+                <table id="jqGridLotTmpOper"></table>
+                <div id="jqGridPagerLotTmpOper"></div>
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <legend>添加不良产品信息</legend>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label small" for="ds_stepm2">小站点</label>
+                                <div class="col-sm-8">
+                                    <select id="addstepmerror" class="form-control "></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label small" for="ds_errorcode">不良代码</label>
+                                <div class="col-sm-8">
+                                    <select name="adderrorcode" id="adderrorcode" class="form-control">
+                                        <option value="" selected="selected">Audi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--<div class="col-sm-4">
+                                <label class="col-sm-4 control-label small" for="ds_cg">CG备注</label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="addcg" class="form-control" onkeydown="onKeyDownCGremark(event)" />
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label small" for="ds_remark">不良备注</label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="addremark" class="form-control" onkeydown="onKeyDownNGremark(event)" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="col-sm-4 control-label small" for="ds_num">不良数量</label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="addnum" class="form-control" onkeydown="onKeyDownNgnum(event)" />
+                                </div>
+                            </div>
+                        </div>
+                     </fieldset>
+                        </form>
+                            <table id="jqGridLotTmpNgmsg"></table>
+                            <div id="jqGridPagerLotTmpNgmsg"></div>
+                    <div class="col-sm-8">
+                        <button type="button" id="btnMoveout" name="btnMoveout"  class="btn btn-success btn-sm btn-block" onclick="onConfirm()">确认过账</button>
+                    </div>
+              </div>
+            </div>
+  </div>
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">请输入CG编码绑定作业线别</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="checklineCG" name="checklineCG" class="form-control" onkeydown="onKeyDownCGLine(event)" />
+                    <h1><label class="col-sm-8 label-success " id="lblcheckcgl" for="ds_checkcgl"></label></h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="BtnSaveCGLLine()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

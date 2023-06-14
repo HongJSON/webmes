@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>任务数据审核</title>    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../../assets/adminlte/skins/_all-skins.css">
+    <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../../assets/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../../css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../assets/adminlte/css/AdminLTE.css">
+    <link href="../../../assets/bootstrap/css/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="../../../assets/bootstrap/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="../../../assets/sweetalert2-8.11.8/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        .left-25 {
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="wrapper skin-blue">
+    <section class="content-header">
+        <h1>
+            任务数据审核
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> OQC-QUALITY</a></li>
+            <li class="active">任务数据审核</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">操作人员：<span id="user"></span>&nbsp;</label>
+                <i class="fa fa-fw fa-info-circle" title="信息展示"></i><label class="text-red">需求：任务数据审核</label>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-sm-10 col-md-8 col-lg-6 column">
+                    <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13){return false;}">
+                        <fieldset>
+                            <div class="form-group">
+                                <span class="col-sm-3" id="lot" style="color:red"></span>
+                                <div class="col-sm-6">
+                                    <span id="getInfo" style="color:red"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">任务单号:</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="Dnno" data-live-search="true" onchange="GetShow()"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">请选择日期:</label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="entryDate" id="datetimepicker" class="form-control" placeholder="请选择日期" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">线体:</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="PdlineName" data-live-search="true"></select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" name="entryDate" id="JJ" class="form-control" autocomplete="off" onkeydown="O05Keydown(event)" />
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">制程:</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="ProcessName" data-live-search="true"></select>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">模板名称:</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="Template" data-live-search="true"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName">班别:</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="dataType" data-live-search="true">
+                                        <option>--请选择--</option>
+                                        <option>白班</option>
+                                        <option>夜班</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-5">
+                                </div>
+                                <div class="col-sm-7">
+                                    <button type="button" class="btn btn-primary" onclick="SelectShow()">查询单号</button>
+                                    <button id="add" type="button" class="btn  btn-default  btn-sm rightSize" onclick="addrow()" style="background-color: #00CC66">审核</button>
+                                    <button id="add" type="button" class="btn  btn-default  btn-sm rightSize" onclick="Daddrow()" style="background-color: red">驳回</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="empName"></label>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div id="mymodal1" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">请核查</h4>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">ID:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="entryDate" id="Id1" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">任务号:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="entryDate" id="Dnno11" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">日期:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="entryDate" id="datetimepicker11" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">班别:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="entryDate" id="banbie1" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE1">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp1"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType1" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE2">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp2"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType2" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div id="LTYPE3">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp3"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType3" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE4">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp4"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType4" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE5">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp5"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType5" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE6">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp6"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType6" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE7">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp7"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType7" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE8">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp8"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType8" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE9">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp9"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType9" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE10">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp10"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType10" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE11">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp11"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType11" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE12">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp12"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType12" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE13">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp13"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType13" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE14">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp14"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType14" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE15">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp15"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType15" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE16">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp16"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType16" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE17">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp17"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType17" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE18">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp18"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType18" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE19">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp19"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType19" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="LTYPE20">
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true"><span id="LTyp20"></span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="LType20" class="form-control" autocomplete="off" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <div>
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">结果:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="Result" class="form-control" autocomplete="off" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">FA:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="Fa" class="form-control" autocomplete="off" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <label class="col-sm-3 control-label small" for="modelName" data-live-search="true">CA:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ary_lot" id="Ca" class="form-control" autocomplete="off" />
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary" onclick="insert1()">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-sm-10 col-md-10 col-lg-10 left-25">
+                        <table id="table" class="table table-hover" style="table-layout: auto; word-break: break-all;"></table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>    <!-- /.content -->
+    <script src="../../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/adminlte/js/adminlte.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="../../../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../../../assets/sweetalert2-8.11.8/sweetalert2.min.js"></script>
+    <script src="../../../js/xlsx.core.min.js"></script>
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../../assets/bootstrap/js/bootstrap-select.js"></script>
+    <!--工具类-->
+    <script src="../../../js/bs/common.js"></script>
+    <script src="../../../js/bs/OQC-QUALITY/O05.js"></script>
+</body>
+</html>
